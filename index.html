@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Reloj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <p id="clock">Clock</p>
+  </body>
+  <style>
+    html,
+    body {
+      display: flex;
+      margin: 0;
+      flex: 1;
+    }
+
+    #clock {
+      flex: 1;
+      text-align: center;
+      justify-self: center;
+      align-self: center;
+      font-size: 12vw;
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+    }
+  </style>
+  <script>
+    let clock = document.getElementById("clock");
+    const options = {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      fractionalSecondDigits: 3,
+      hour12: false,
+    };
+    let formatter = new Intl.DateTimeFormat(undefined, options);
+    function update() {
+      let timeText = formatter.format(Date.now());
+      clock.innerText = timeText;
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  </script>
+</html>
